@@ -1,0 +1,141 @@
+// Paramètres généraux
+@font-face {
+  font-family: "font-reg";
+  src: url(../fonts/PlayfairDisplay-Regular.ttf);
+}
+@font-face {
+  font-family: "font-bold";
+  src: url(../fonts/PlayfairDisplay-ExtraBold.ttf);
+}
+
+$font1: font-reg, serif;
+$font2: font-bold, serif;
+
+$black1: #000101;
+$white1: #fefeff;
+$white2: rgb(144, 128, 128);
+
+@keyframes animLink {
+  50% {
+    transform: scaleX(0.2);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+
+  // couleur de sélection de texte
+  &::selection {
+    background: $black1;
+    color: $white1;
+    transition: 0.7s ease-in-out;
+  }
+
+}
+
+// adouçit le scroll :
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font1;
+  background: $black1;
+
+  // pour être responsive sans media queries, les paramètres se mettent en pourcentage du viewport (écran utilisateur) en largeur, avec une taille minimum
+  h2 {
+    font-size: calc(3rem + 5vw);
+    text-align: center;
+    color: $white2;
+    font-family: $font2;
+    letter-spacing: 3px;
+
+  }
+  .title {
+    font-size: calc(1.5rem + 5vw);
+    letter-spacing: 0;
+  }
+  span {
+    display: inline-block;
+  }
+  a, a:visited {
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    color: $white1;
+    transition: 0.1s linear;
+    font-size: calc(0.8rem + 0.8vw);
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      background: $white1;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      transform-origin: left;
+    }
+    &:hover::after {
+      animation: animLink 1.4s infinite ease-in-out;
+    }
+    &:hover {
+      transform: scale(1.04);
+      color: $white2;
+    }
+  }
+.img {
+  height: 395px;
+  width: 100vw;
+  max-width: 395px;
+  margin: 0 auto;
+  filter: grayscale(100%);
+  transition: 1.6s;
+  
+
+  &:hover {
+    filter: grayscale(10%);
+  }
+}
+
+.line-wrapper {
+  height: 2px;
+  width: 70%;
+  margin: 15px auto;
+  transition: 1s cubic-bezier(0.77,0,0.18,1);
+  // transform-origin: left; // center par défaut
+  transition-delay: 0.65s;
+  opacity: 0;
+  transform: scaleX(0);
+  background: $white1;
+}
+.line-wrapper.is-inview {
+  opacity: 1;
+  transform: scale(1);
+ 
+}
+.wrapper {
+  perspective: 900px;
+  margin: 20px;
+}
+
+.appear {
+  opacity: 0;
+  transform: translateY(100%) rotateX(-80deg);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) ;
+}
+.appear.is-inview {
+  transition-delay: 1s;
+  opacity: 1;
+  transform: none;
+}
+
+
+
+}

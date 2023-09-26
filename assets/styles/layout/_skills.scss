@@ -1,0 +1,25 @@
+.skills {
+  margin: 50px 0 20px;
+
+  // h2 {
+  //   margin-bottom: 150px;
+  // }
+
+  .wrapper {
+    margin: 20px 10px;
+  }
+  .appear {
+    text-align: center;
+    transition-delay: 1.2s;
+  }
+  p {
+    font-size: calc(1rem + 3vw);
+    font-family: $font2;
+    letter-spacing: 4px;
+    background: $black1;
+    color: $white1;
+    display: inline-block;
+    padding: 0 12px 12px;
+  }
+ 
+}
